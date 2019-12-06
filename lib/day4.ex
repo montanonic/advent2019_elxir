@@ -52,7 +52,7 @@ defmodule Day4 do
         fn x ->
           x
           |> Stream.chunk_by(& &1)
-          |> Stream.filter(&(Enum.count(&1) == 2))
+          |> Stream.filter(&match?([_, _], &1))
         end
       else
         &Stream.chunk_every(&1, 2, 1, :discard)
