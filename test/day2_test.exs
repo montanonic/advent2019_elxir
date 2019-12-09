@@ -2,22 +2,25 @@ defmodule Day2Test do
   use ExUnit.Case
   doctest Day2
 
-  _program = """
-  1,9,10,3,
-  2,3,11,0,
-  99,
-  30,40,50
-  """
-
   def run_program(program) do
-    Day2.Implementation.run_program(program)
+    program
+    # Change into a map
+    |> Stream.with_index()
+    |> Enum.into(%{}, fn {v, i} -> {i, v} end)
+    |> Day2.Implementation.run_program()
+    #  Now back into a list
+    |> Enum.sort_by(fn {k, _v} -> k end)
+    |> Enum.map(fn {_k, v} -> v end)
   end
 
-  test "1 op" do
+  test "opcodes parsing gets both the operation AND parameter modes" do
+  end
+
+  test "1 op; 3 inputs, the first two are the indexes for input values, the third is the index where you place the input sum" do
     assert run_program([1, 0, 0, 0, 99]) == [2, 0, 0, 0, 99]
   end
 
-  test "2 op" do
+  test "2 op; 3 inputs, the first two are the indexes for input values, the third is the index where you place the input product" do
     assert run_program([2, 3, 0, 3, 99]) == [2, 3, 0, 6, 99]
   end
 
