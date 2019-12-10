@@ -22,7 +22,7 @@ defmodule Advent2019.MixProject do
   defp deps do
     [
       {:recon, "~> 2.5"},
-      {:ex2ms, "~> 1.0"}
+      {:ex2ms, git: "https://github.com/ericmj/ex2ms/", branch: "master"}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
     ]

@@ -1,4 +1,4 @@
 %{
-  "ex2ms": {:hex, :ex2ms, "1.5.0", "19e27f9212be9a96093fed8cdfbef0a2b56c21237196d26760f11dfcfae58e97", [:mix], [], "hexpm"},
+  "ex2ms": {:git, "https://github.com/ericmj/ex2ms/", "f9a53926d3415521554fc6ba62889a1061f00ec9", [branch: "master"]},
   "recon": {:hex, :recon, "2.5.0", "2f7fcbec2c35034bade2f9717f77059dc54eb4e929a3049ca7ba6775c0bd66cd", [:mix, :rebar3], [], "hexpm"},
 }
