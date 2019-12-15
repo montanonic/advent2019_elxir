@@ -33,7 +33,7 @@ defmodule Day1 do
     IO.puts("dir #{Application.app_dir(:advent2019, "priv/day1.txt")}")
 
     modules =
-      Advent2019.input_lines(1)
+      Advent2019.input_lines(__MODULE__)
       |> Stream.map(&String.to_integer/1)
 
     total_fuel_required =

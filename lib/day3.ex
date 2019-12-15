@@ -33,7 +33,7 @@ defmodule Day3 do
   defp get_wires(manual) do
     manual_lines = manual && manual |> String.split("\n") |> Enum.map(&String.trim/1)
 
-    (manual_lines || Advent2019.input_lines(3))
+    (manual_lines || Advent2019.input_lines(__MODULE__))
     |> Stream.map(&String.split(&1, ","))
     |> Enum.to_list()
   end
