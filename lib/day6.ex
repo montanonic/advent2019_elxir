@@ -10,10 +10,10 @@ defmodule Day6 do
   def part2 do
     orbits = parse_orbits(data())
 
-    you = orbits["YOU"]
-    santa = orbits["SAN"]
+    you_orbit = orbits["YOU"]
+    santa_orbit = orbits["SAN"]
 
-    fewest_orbital_transfers_between_planets(orbits, you, santa)
+    fewest_orbital_transfers_between_planets(orbits, you_orbit, santa_orbit)
   end
 
   def data do
@@ -49,9 +49,7 @@ defmodule Day6 do
     |> Enum.into(%{}, fn [orbitted, orbitter] -> {orbitter, orbitted} end)
   end
 
-  def steps_to_center(orbits, planet), do: steps_to_center(orbits, planet, 0)
-
-  def steps_to_center(orbits, planet, count) do
+  def steps_to_center(orbits, planet, count \\ 0) do
     if planet == "COM" do
       count
     else
@@ -60,13 +58,11 @@ defmodule Day6 do
   end
 
   # Returns the path FROM the center to the planet specified.
-  def path_from_center(orbits, planet), do: path_from_center(orbits, planet, [planet])
-
-  def path_from_center(orbits, planet, path) do
+  def path_from_center(orbits, planet, path \\ []) do
     if planet == "COM" do
       List.flatten(path)
     else
-      path_from_center(orbits, orbits[planet], [orbits[planet] | path])
+      path_from_center(orbits, orbits[planet], [planet | path])
     end
   end
 
