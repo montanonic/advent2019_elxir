@@ -16,31 +16,7 @@ defmodule Day6 do
     fewest_orbital_transfers_between_planets(orbits, you_orbit, santa_orbit)
   end
 
-  def data do
-    Advent2019.input_blob(__MODULE__)
-  end
-
-  def test_data do
-    """
-    COM)B
-    B)C
-    C)D
-    D)E
-    E)F
-    B)G
-    G)H
-    D)I
-    E)J
-    J)K
-    K)L
-    """
-  end
-
-  defmacro rl do
-    quote do
-      import Day6
-    end
-  end
+  def data, do: Advent2019.input_blob(__MODULE__)
 
   def parse_orbits(input) do
     rx = ~r/(\w+)\)(\w+)/
@@ -58,9 +34,10 @@ defmodule Day6 do
   end
 
   # Returns the path FROM the center to the planet specified.
+  @spec path_from_center(any, any, [any]) :: [any]
   def path_from_center(orbits, planet, path \\ []) do
     if planet == "COM" do
-      List.flatten(path)
+      path
     else
       path_from_center(orbits, orbits[planet], [planet | path])
     end
@@ -70,5 +47,21 @@ defmodule Day6 do
     pathA = path_from_center(orbits, pA) -- path_from_center(orbits, pB)
     pathB = path_from_center(orbits, pB) -- path_from_center(orbits, pA)
     Enum.count(pathA) + Enum.count(pathB)
+  end
+
+  def test_data do
+    """
+    COM)B
+    B)C
+    C)D
+    D)E
+    E)F
+    B)G
+    G)H
+    D)I
+    E)J
+    J)K
+    K)L
+    """
   end
 end
