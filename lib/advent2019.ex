@@ -8,6 +8,11 @@ defmodule Advent2019 do
     ])
   end
 
+  def input_blob(module) do
+    input_file(module)
+    |> File.read!()
+  end
+
   def input_lines(module) do
     input_file(module)
     |> File.stream!()
