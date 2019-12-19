@@ -21,6 +21,7 @@ defmodule Advent2019.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:cortex, "~> 0.5", only: [:dev, :test]},
       {:recon, "~> 2.5"},
       {:propcheck, "~> 1.2", only: [:test, :dev]},
       {:ex2ms, git: "https://github.com/ericmj/ex2ms/", branch: "master"}
